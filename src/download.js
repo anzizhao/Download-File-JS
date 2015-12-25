@@ -1,4 +1,4 @@
-window.downloadFile = function (sUrl) {
+window.downloadFile = function (sUrl, filename) {
 
     //iOS devices do not support downloading. We have to inform user about this.
     if (/(iP)/g.test(navigator.userAgent)) {
@@ -11,6 +11,9 @@ window.downloadFile = function (sUrl) {
         //Creating new link node.
         var link = document.createElement('a');
         link.href = sUrl;
+        if( filename ){ 
+            link.donwload =  filename;
+        }
 
         if (link.download !== undefined) {
             //Set HTML5 download attribute. This will prevent file from opening if supported.
